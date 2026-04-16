@@ -1,9 +1,3 @@
-
----
-
-# ✅ FIXED CLEAN JENKINSFILE (copy this EXACTLY)
-
-:::writing{variant="standard" id="jenk7"}
 pipeline {
     agent any
 
@@ -55,12 +49,3 @@ pipeline {
         }
     }
 }
-:::
-
----
-
-# 🚀 What you must do now
-
-1. Open GitHub repo  
-2. Edit **Jenkinsfile**  
-3. **Delete ALL lines containing:**
