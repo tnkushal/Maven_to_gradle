@@ -1,13 +1,7 @@
-package com.example;
+package com.example1;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Hello from Gradle App!");
     }
 }

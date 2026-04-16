@@ -1,55 +1,55 @@
 pipeline {
-    agent any
+agent any
 
-    tools {
-        maven 'Maven'
-        gradle 'Gradle'
-        jdk 'JDK11'
-    }
+```
+tools {
+    maven 'Maven'
+    gradle 'Gradle'
+    jdk 'JDK11'
+}
 
-    stages {
+stages {
 
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/tnkushal/Maven_to_gradle.git'
-            }
-        }
-
-        // OPTIONAL: only if you still want Maven build
-        stage('Build with Maven') {
-            steps {
-                sh 'mvn clean install'
-            }
-        }
-
-        // Build using Gradle
-        stage('Build with Gradle') {
-            steps {
-                sh 'gradle clean build'
-            }
-        }
-
-        // Run Tests
-        stage('Test') {
-            steps {
-                sh 'gradle test'
-            }
-        }
-
-        // Run Application (now it will work ✅)
-        stage('Run Application') {
-            steps {
-                sh 'gradle run'
-            }
+    stage('Checkout') {
+        steps {
+            git branch: 'main', url: 'https://github.com/tnkushal/Maven_to_gradle.git'
         }
     }
 
-    post {
-        success {
-            echo 'Pipeline executed successfully!'
+    stage('Build with Maven') {
+        steps {
+            sh 'mvn clean install'
         }
-        failure {
-            echo 'Pipeline failed!'
+    }
+
+    stage('Build with Gradle') {
+        steps {
+            sh 'gradle clean build'
+        }
+    }
+
+    stage('Test') {
+        steps {
+            sh 'gradle test'
+        }
+    }
+
+    stage('Run Application') {
+        steps {
+            sh 'java -jar build/libs/*.jar'
         }
     }
 }
+
+post {
+    success {
+        echo 'Pipeline executed successfully!'
+    }
+    failure {
+        echo 'Pipeline failed!'
+    }
+}
+```
+
+}
+
